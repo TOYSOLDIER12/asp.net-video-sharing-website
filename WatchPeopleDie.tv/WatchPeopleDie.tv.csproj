@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>aspnet-WatchPeopleDie.tv-2040023D-08C2-4B05-8680-D39674CA6A1C</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.8" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.8" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.25" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.8" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.8" />
+        <PackageReference Include="Twitter.Bootstrap" Version="3.0.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot\video\" />
+    </ItemGroup>
+
+</Project>

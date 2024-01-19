@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fookin' Horror Header</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<tbody>
+<style>
+     body {
+         margin: 0;
+         padding: 0;
+         font-family: 'Arial', sans-serif;
+         background-color: #1a1a1a;
+         color: #fff;
+     }
+ 
+     header {
+         background-color: #333;
+         color: #fff;
+         padding: 20px;
+         text-align: center;
+     }
+ 
+     nav a {
+         text-decoration: none;
+         color: #fff;
+         font-weight: bold;
+     }
+ 
+     .post-container {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         border-bottom: 1px solid #666;
+         padding: 15px;
+     }
+ 
+     .user-details {
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         margin-right: 15px;
+     }
+ 
+     .user-thumbnail {
+         width: 40px;
+         height: 40px;
+         border-radius: 50%;
+     }
+ 
+     .poster-info {
+         margin-left: 0%;
+         margin-bottom: 0%;
+     }
+ 
+     .video-container {
+         display: flex;
+         flex-direction: row;
+         justify-content: space-between;
+         align-items: center;
+     }
+ 
+     .video-container video {
+         width: 250px;
+         height: 200px;
+     }
+ 
+     .title-container {
+         margin-bottom: 0;
+         margin-left: 20%;
+     }
+ 
+     .video-wrapper {
+         height: 800px; /* Adjust the height as needed */
+         overflow: auto;
+     }
+ 
+     .actions {
+                 marging-bottom: 30%;
+                 position: relative;
+                 margin-left: 40%;
+             }
+     
+     .actions button {
+           background-color: transparent;
+           border: none;
+           cursor: pointer;
+           font-weight: bold;
+           color: #ff6666; /* Blood red */
+             }
+     
+     .actions .dropdown {
+           display: none;
+           position: absolute;
+           top: 20px;
+           left: 0;
+           background-color: #f9f9f9;
+           min-width: 100px;
+           box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+           z-index: 1;
+             }
+     
+     .actions .dropdown a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          }
+     
+     .actions .dropdown a:hover {
+          background-color: #f1f1f1;
+        }
+     
+     actions:hover + .dropdown {
+            display: block;
+           }
+</style>
+ 
+<div class="video-wrapper">
+    <table>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="post-container">
+                    <div class="user-details">
+                        <img src="@item.poster?.ProfilePath" alt="your face?" class="user-thumbnail" />
+                        <p class="poster-info">@item.poster?.UserName</p>
+                    </div>
+                    <div class="video-container">
+                        <video autoplay="autoplay" controls muted loop="true" width="250" height="200">
+                            <source src="@item.filePath" type="video/mp4">
+                            Upgrade browser you cave man lol.
+                        </video>
+                        <h4 class="title-container">@item.Title</h4>
+                    </div>
+                    <td class="actions">
+                        <button class="dropbtn">&#x25BE;</button>
+                        <ul class="dropdown">
+                            <li><a asp-action="Edit" asp-route-id="@item.Id">Edit</a></li>
+                            <li><a asp-action="Delete" asp-route-id="@item.Id">Delete</a></li>
+                        </ul>
+                    </td>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" style="height: 10px;"></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>  
+</tbody>
+</html>
